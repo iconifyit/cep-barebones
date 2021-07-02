@@ -1,0 +1,7 @@
+{
+    "domain": "atomiclotus.us.auth0.com",
+    "clientId": "vJiQ6ATq5P0jd5LJMVMW79WsV2HJjPOf",
+    "audience": "{YOUR AUTH0 API_IDENTIFIER}",
+    "appOrigin": "http://localhost:8080",
+    "apiOrigin": "http://localhost:3001"
+  }

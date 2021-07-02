@@ -38,7 +38,7 @@ class JsxError extends Error {
 class JsxConsole {
     constructor() {
 
-        csInterface.evalScript(this.jsxConsoleCode(), function(result) {
+        csInterface.evalScript(this.jsxConsoleCode(), (result) => {
             console.log('JsxConsole loaded?')
         })
 

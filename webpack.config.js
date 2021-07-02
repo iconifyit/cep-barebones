@@ -105,13 +105,17 @@ module.exports = {
                     options: { "presets": ["@babel/preset-react"] }
 				}
             },
-			{
-                test: /\.css$/,
-                use: [
-                  {loader: MiniCssExtractPlugin.loader},
-                  'css-loader',
-                ],
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
             },
+			// {
+            //     test: /\.css$/,
+            //     use: [
+            //       {loader: MiniCssExtractPlugin.loader},
+            //       'css-loader',
+            //     ],
+            // },
             {
                 test: /\.html$/i,
                 loader: 'html-loader',
@@ -127,6 +131,15 @@ module.exports = {
 						name: '[name].[ext]',
 						outputPath: 'client/theme/img/',
 						publicPath: '../img/'
+					}
+				}
+			},
+            {
+				test: /\.(png|jpe?g|gif)$/i,
+				use: {
+					loader: 'file-loader',
+					options: {
+						name: '[name].[ext]'
 					}
 				}
 			},

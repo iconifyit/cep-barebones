@@ -6,19 +6,43 @@ const ReactDOM            = require('react-dom')
     , {contextMenuRouter} = require('./cs-internals.js')
 ;
 
-const Counter = require('components/Counter.js');
-const store = require('client/store/store.js');
+const Counter           = require('components/Counter.js');
+const store             = require('client/store/store.js');
+const jsxConsole        = require('client/lib/jsx-console/jsx-console.js');
+const ThemeSwitcher     = require('client/lib/ThemeSwitcher/ThemeSwitcher.js');
+const FlyoutMenuImpl    = require('client/lib/FlyoutMenu/FlyoutMenuImpl.js');
+
+// ThemeSwitcher       : 'client/lib/ThemeSwitcher/ThemeSwitcher.js',
+// CSLib               : 'client/lib/CSInterface/CSInterface.js',
+// jsxConsole          : 'client/lib/jsx-console/jsx-console.js',
+// flyoutMenuImpl      : 'client/lib/FlyoutMenu/FlyoutMenuImpl.js',
+// ContextMenuRouter   : 'client/lib/ContextMenuRouter/ContextMenuRouter.js',
+// ContextMenuJSON     : 'client/lib/ContextMenuRouter/ContextMenuExample.json',
+// darkTheme           : 'client/theme/css/topcoat-desktop-dark.min.css',
+// lightTheme          : 'client/theme/css/topcoat-desktop-light.min.css',
+// styles              : 'client/theme/css/styles.css',
+// fontCss             : 'client/theme/font/stylesheet.css'
+
+// console.log('jsxConsole', jsxConsole)
+
+import { Auth0Provider } from '@auth0/auth0-react';
 
 /**
  * Render the panel HTML.
  * Add your own components in /cep-barebones/client/components/
  */
 ReactDOM.render(
-    <Provider store={store}>
-        <App>
-            <Counter store={store} />
-        </App>
-    </Provider>,
+    <Auth0Provider
+        domain="atomiclotus.us.auth0.com"
+        clientId="vJiQ6ATq5P0jd5LJMVMW79WsV2HJjPOf"
+        redirectUri={window.location.origin}
+    >
+        <Provider store={store}>
+            <App>
+                <Counter store={store} />
+            </App>
+        </Provider>
+    </Auth0Provider>,
     document.getElementById('app'), () => {
         csInterface.setContextMenuByJSON(
             JSON.stringify(contextMenuRouter.menuItems), 
